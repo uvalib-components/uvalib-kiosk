@@ -1,0 +1,144 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../core-scaffold/core-scaffold.html">
+<link rel="import" href="../core-header-panel/core-header-panel.html">
+<link rel="import" href="../core-toolbar/core-toolbar.html">
+<link rel="import" href="../uvalib-stacks-direct/uvalib-stacks-direct.html">
+<link rel="import" href="../uvalib-catalog/uvalib-catalog.html">
+<link rel="import" href="../uvalib-floorplan-alderman/uvalib-floorplan-alderman.html">
+<link rel="import" href="../flatiron-director/flatiron-director.html">
+<link rel="import" href="../core-selector/core-selector.html">
+
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+    <seed-element></seed-element>
+
+@element seed-element
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://polymerlabs.github.io/seed-element
+-->
+<polymer-element name="uvalib-kiosk" attributes="notitle author">
+
+  <template>
+
+    <link rel="stylesheet" href="uvalib-kiosk.css" />
+
+    <uvalib-catalog id="api" advanced titleQuery={{query}} items={{items}} inclusiveFacetsJSON='{{includeFacets}}'></uvalib-catalog>
+
+    <uvalib-stacks-direct callnumber="{{callnum}}" desttitle="{{desttitle}}" floor="{{selectedFloor}}" area="{{area}}" direct="{{direct}}"></uvalib-stacks-direct>
+
+    <core-scaffold id="core_scaffold">
+          <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
+            <core-toolbar id="core_toolbar"></core-toolbar>
+            <section id="section" layout vertical>
+                <section id="section1" flex relative>
+            
+            <paper-input label="Callnumber" floatinglabel value="{{callnum}}"></paper-input><br>
+
+            <paper-input label="Catalog Search" value={{query}}></paper-input>
+            <core-selector class="list" selected="{{selected}}">
+          <template repeat="{{item in items}}">
+            <div>
+              <strong>{{item['title_display'][0]}}</strong><br />
+              Format: {{item['format_facet'][0]}}<br />
+              Call Number: {{item['call_number_display'][0]}}
+            </div>
+          </template>
+        </core-selector>
+
+                </section>
+            </section>
+          </core-header-panel>
+          <div id="div" tool>UVa Library Kiosk App</div>
+          <div id="main">
+          <div id="directions">{{direct}}</div>
+          <!--
+            <dl>
+              <dt>title</dt><dd>{{desttitle}}</dd>
+              <dt>floor</dt><dd>{{selectedFloor}}</dd>
+              <dt>area</dt><dd>{{area}}</dd>
+              <dt>direct</dt><dd>{{direct}}</dd>
+            </dl>
+          -->
+          <uvalib-floorplan-alderman id="stackedFloors" selectedFloor="{{selectedFloor}}" stacked></uvalib-floorplan-alderman>
+          <uvalib-floorplan-alderman id="focusFloors" selectedDest="{{desttitle}}" selectedFloor="{{selectedFloor}}" skewed?="{{skewed}}" deskewText?="{{deskewtext}}" stacked?={{stacked}}></uvalib-floorplan-alderman>
+        </div>
+      </core-scaffold>
+
+  </template>
+
+  <script>
+
+    Polymer('uvalib-kiosk', {
+      selectedFloor: 4,
+      includeFacets: '{"library_facet":["Alderman"],"format_facet":["Book", "Broadside", "Journal Magazine", "Large Print", "Manuscript", "Map", "Microform", "Mixed Materials", "Newspaper", "Other Media", "Photographs", "Physical Object", "Print", "Thesis%2FDissertation"]}',
+
+      selectedChanged: function(oldVal, newVal){
+        //this.selectedLocation = this.getLocation(this.items[newVal]);
+        this.callnum = this.items[newVal]["call_number_display"][0];
+        //this.selectedNormalizedCallNumber = this.items[newVal]["normalizedCallNum"];
+      },
+      /**
+       * The `author` attribute sets an initial author
+       * 
+       * @attribute author
+       * @type string
+       * @default 'Dimitri Glazkov'
+       */
+      author: 'Dimitri Glazkov',
+      
+      /**
+       * `fancy` is a property that does something fancy.
+       * 
+       * @property fancy
+       * @type bool
+       * @default false
+       */
+      fancy: false,
+
+      ready: function() {
+        // Ready is a lifecycle callback.
+        // You can do setup work in here.
+        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
+      },
+
+      /**
+       * The `sayHello` method will return a greeting.
+       * 
+       * @method sayHello
+       * @param {String} greeting Pass in a specific greeting.
+       * @return {String} Returns a string greeting.
+       */
+      sayHello: function(greeting) {
+        var response = greeting || 'Hello World!';
+        return 'seed-element says, ' + response;
+      },
+
+      /**
+       * The `seed-element-lasers-success` event is fired whenever we
+       * call fireLasers.
+       * 
+       * @event seed-element-lasers-success
+       * @param {Object} detail
+       *   @param {string} detail.sound An amazing sound.
+       */
+
+      /**
+       * The `fireLasers` method will fire the lasers. At least
+       * it will dispatch an event that claims lasers were fired :)
+       * 
+       * @method fireLasers
+       */
+      fireLasers: function() {
+        this.fire('seed-element-lasers-success', { sound: 'Pew pew pew!' });
+      }
+
+    });
+
+  </script>
+
+</polymer-element>
