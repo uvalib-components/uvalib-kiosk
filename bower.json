@@ -15,6 +15,9 @@
   "dependencies": {
     "polymer": "Polymer/polymer#~0.3.3",
     "polymer-test-tools": "Polymer/polymer-test-tools#~0.3.3",
-    "flatiron-director": "PolymerLabs/flatiron-director"
+    "paper-input":"Polymer/paper-input",
+    "core-header-panel":"Polymer/core-header-panel",
+    "core-scaffold":"Polymer/core-scaffold",
+    "core-toolbar":"Polymer/core-toolbar"
   }
 }
