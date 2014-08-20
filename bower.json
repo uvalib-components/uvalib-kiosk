@@ -21,6 +21,7 @@
     "core-toolbar":"Polymer/core-toolbar",
     "uvalib-stacks-direct":"uvalib-components/uvalib-stacks-direct",
     "uvalib-floorplan-alderman":"uvalib-components/uvalib-floorplan-alderman",
-    "uvalib-catalog":"uvalib-components/uvalib-catalog"
+    "uvalib-catalog":"uvalib-components/uvalib-catalog",
+    "juicy-html": "Juicy/juicy-html"
   }
 }

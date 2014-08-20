@@ -7,6 +7,7 @@
 <link rel="import" href="../uvalib-catalog/uvalib-catalog.html">
 <link rel="import" href="../uvalib-floorplan-alderman/uvalib-floorplan-alderman.html">
 <link rel="import" href="../core-selector/core-selector.html">
+<link rel="import" href="../juicy-html/juicy-html.html">
 
 <!--
 Element providing a kiosk app for the alderman library to help find books in the stacks.
@@ -23,6 +24,9 @@ Element providing a kiosk app for the alderman library to help find books in the
 <polymer-element name="uvalib-kiosk" attributes="notitle author">
 
   <template>
+
+    <script type="text/javascript" src="//use.typekit.net/txp7zqw.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
     <link rel="stylesheet" href="uvalib-kiosk.css" />
 
@@ -52,12 +56,15 @@ Element providing a kiosk app for the alderman library to help find books in the
                 </section>
             </section>
           </core-header-panel>
-          <div id="div" tool>UVa Library Kiosk App</div>
+          <div id="div" class="logo" tool>University of Virginia Library</div>
           <div id="main">
-          <div id="directions">{{direct}}</div>
-          
-          <uvalib-floorplan-alderman id="stackedFloors" selectedFloor="{{selectedFloor}}" stacked></uvalib-floorplan-alderman>
+          <div id="directions">
+            <template is="juicy-html" bind="" content="{{direct}}"></template>
+          </div>
           <uvalib-floorplan-alderman id="focusFloors" selectedDest="{{desttitle}}" selectedFloor="{{selectedFloor}}" skewed?="{{skewed}}" deskewText?="{{deskewtext}}" stacked?={{stacked}}></uvalib-floorplan-alderman>
+
+          <uvalib-floorpicker-alderman vertical selectedFloor="{{selectedFloor}}"></uvalib-floorpicker-alderman>
+
         </div>
       </core-scaffold>
 

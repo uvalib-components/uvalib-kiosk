@@ -21,9 +21,12 @@ polyfill-next-selector { content: ':host > h2'; }
             #core_header_panel {
               background-color: rgb(255, 255, 255);
             }
+            #core_scaffold::shadow #drawerPanel core-header-panel core-toolbar {
+              background-color: #0c1a32;
+            }
             #core_toolbar {
               color: rgb(255, 255, 255);
-              background-color: rgb(79, 125, 201);
+              background-color: #0c1a32;
             }
             #section {
               width: 100%;
@@ -53,7 +56,7 @@ polyfill-next-selector { content: ':host > h2'; }
         .list > *.core-selected {
         	background: #333;
         }
-
+/*
         #stackedFloors {
         	width:100px;
         	float: left;
@@ -62,3 +65,15 @@ polyfill-next-selector { content: ':host > h2'; }
         #focusFloors {
         	float:right;
         }
+*/
+.logo {
+  font-family: "prenton", "Helvetica Neue", Arial, sans-serif;
+}
+
+uvalib-floorplan-alderman {
+  float: left;
+}
+
+uvalib-floorpicker-alderman {
+  float: left;
+}
