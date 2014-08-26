@@ -8,6 +8,8 @@
 <link rel="import" href="../uvalib-floorplan-alderman/uvalib-floorplan-alderman.html">
 <link rel="import" href="../core-selector/core-selector.html">
 <link rel="import" href="../juicy-html/juicy-html.html">
+<link rel="import" href="../core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../paper-button/paper-button.html">
 
 <!--
 Element providing a kiosk app for the alderman library to help find books in the stacks.
@@ -38,29 +40,35 @@ Element providing a kiosk app for the alderman library to help find books in the
           <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
             <core-toolbar id="core_toolbar"></core-toolbar>
             <section id="section" layout vertical>
-                <section id="section1" flex relative>
-            
-            <paper-input label="Callnumber" floatinglabel value="{{callnum}}"></paper-input><br>
-
-            <paper-input label="Catalog Search" value={{query}}></paper-input>
-            <core-selector class="list" selected="{{selected}}">
-          <template repeat="{{item in items}}">
-            <div>
-              <strong>{{item['title_display'][0]}}</strong><br />
-              Format: {{item['format_facet'][0]}}<br />
-              Call Number: {{item['call_number_display'][0]}}
-            </div>
-          </template>
-        </core-selector>
-
-                </section>
+              <section id="section1" flex relative>
+                <core-animated-pages id="searchDirectBox" selected="0">
+                  <section id="searchpage">            
+                    <paper-input label="Callnumber" floatinglabel value="{{callnum}}"></paper-input><br>
+                    <paper-input label="Catalog Search" value={{query}}></paper-input>
+                    <core-selector class="list" selected="{{selected}}">
+                      <template repeat="{{item in items}}">
+                        <div>
+                          <strong>{{item['title_display'][0]}}</strong><br />
+                          Format: {{item['format_facet'][0]}}<br />
+                          Call Number: {{item['call_number_display'][0]}}
+                        </div>
+                      </template>
+                    </core-selector>
+                  </section>
+                  <section id="directionspage">
+                    <paper-button icon="arrow-back"></paper-button><br />
+                    {{selectedFloor}}<br />
+                    {{area}}<br />
+                    <template is="juicy-html" bind="" content="{{direct}}"></template>        
+                    }
+                  </section>
+                </core-animated-pages>
+              </section>
             </section>
           </core-header-panel>
           <div id="div" class="logo" tool>University of Virginia Library</div>
           <div id="main">
-          <div id="directions">
-            <template is="juicy-html" bind="" content="{{direct}}"></template>
-          </div>
+
           <uvalib-floorplan-alderman id="focusFloors" selectedDest="{{desttitle}}" selectedFloor="{{selectedFloor}}" skewed?="{{skewed}}" deskewText?="{{deskewtext}}" stacked?={{stacked}}></uvalib-floorplan-alderman>
 
           <uvalib-floorpicker-alderman vertical selectedFloor="{{selectedFloor}}"></uvalib-floorpicker-alderman>
@@ -77,6 +85,7 @@ Element providing a kiosk app for the alderman library to help find books in the
       includeFacets: '{"library_facet":["Alderman"],"format_facet":["Book", "Broadside", "Journal Magazine", "Large Print", "Manuscript", "Map", "Microform", "Mixed Materials", "Newspaper", "Other Media", "Photographs", "Physical Object", "Print", "Thesis%2FDissertation"]}',
 
       selectedChanged: function(oldVal, newVal){
+        this.$.searchDirectBox.selected = 1;
         //this.selectedLocation = this.getLocation(this.items[newVal]);
         this.callnum = this.items[newVal]["call_number_display"][0];
         //this.selectedNormalizedCallNumber = this.items[newVal]["normalizedCallNum"];
