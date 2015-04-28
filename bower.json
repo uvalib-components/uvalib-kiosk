@@ -9,7 +9,17 @@
   "main": "uvalib-kiosk.html",
   "dependencies": {
     "polymer": "Polymer/polymer",
-    "paper-icon-button": "Polymer/paper-icon-button"
+    "paper-ripple": "Polymer/paper-ripple",
+    "paper-icon-button": "Polymer/paper-icon-button",
+    "core-scaffold": "Polymer/core-scaffold",
+    "core-selector": "Polymer/core-selector",
+    "core-header-panel": "Polymer/core-header-panel",
+    "core-animated-pages": "Polymer/core-animated-pages",
+    "uvalib-directions": "uvalib-components/uvalib-stacks-direct",
+    "uvalib-images": "uvalib-components/uvalib-images",
+    "uvalib-results-list": "uvalib-components/uvalib-results-list",
+    "uvalib-directions-list": "uvalib-components/uvalib-directions-list",
+    "uvalib-floorplan": "uvalib-components/uvalib-floorplan"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester"
