@@ -19,6 +19,7 @@
     "uvalib-images": "uvalib-components/uvalib-images",
     "uvalib-results-list": "uvalib-components/uvalib-results-list",
     "uvalib-directions-list": "uvalib-components/uvalib-directions-list",
+    "uvalib-directions": "uvalib-components/uvalib-directions",
     "uvalib-floorplan": "uvalib-components/uvalib-floorplan"
   },
   "devDependencies": {
