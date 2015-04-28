@@ -8,7 +8,8 @@
   ],
   "main": "uvalib-kiosk.html",
   "dependencies": {
-    "polymer": "Polymer/polymer"
+    "polymer": "Polymer/polymer",
+    "paper-ripple": "Polymer/paper-ripple"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester"
