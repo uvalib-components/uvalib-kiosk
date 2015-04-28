@@ -1,79 +1,16 @@
-/* To ensure your styling works under the Shadow DOM polyfill, see
-   www.polymer-project.org/docs/polymer/styling.html#directives */
-polyfill-next-selector { content: ':host > h2'; }
-::content h2 {
-  color: blue;
-}
-
 :host {
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              box-sizing: border-box;
-            }
-            #core_scaffold {
-              position: absolute;
-              top: 0px;
-              right: 0px;
-              bottom: 0px;
-              left: 0px;
-            }
-            #core_header_panel {
-              background-color: rgb(255, 255, 255);
-            }
-            #core_scaffold::shadow #drawerPanel core-header-panel core-toolbar {
-              background-color: #0c1a32;
-            }
-            #core_toolbar {
-              color: rgb(255, 255, 255);
-              background-color: #0c1a32;
-            }
-            #section {
-              width: 100%;
-              height: 630px;
-              border: 5px solid rgb(204, 204, 204);
-            }
-            paper-input {
-              width: 90%;
-            }
-
-            .list {
-          display: block;
-          border: 1px solid #ccc;
-          border-bottom: none;
-          background: #666;
-          color: white;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-        
-        .list > * {
-          padding: 0 20px;
-          border-bottom: 1px solid #ccc;
-        }
-
-        .list > *.core-selected {
-        	background: #333;
-        }
-/*
-        #stackedFloors {
-        	width:100px;
-        	float: left;
-        	padding: 20px;
-        }
-        #focusFloors {
-        	float:right;
-        }
-*/
-.logo {
-  font-family: "prenton", "Helvetica Neue", Arial, sans-serif;
+  display: blocks;
+  background-color: white;
 }
 
-uvalib-floorplan-alderman {
-  float: left;
+:host /deep/ [main] {
+	background-color: white;
 }
 
-uvalib-floorpicker-alderman {
-  float: left;
+:host /deep/ #search {
+	width: 100%;
+}
+
+uvalib-logo {
+	padding-right: 15px;
 }
