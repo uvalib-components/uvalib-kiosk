@@ -1,0 +1,16 @@
+{
+  "name": "uvalib-kiosk",
+  "version": "0.0.0",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "uvalib-kiosk.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester"
+  }
+}

@@ -1,0 +1,16 @@
+:host {
+  display: blocks;
+  background-color: white;
+}
+
+:host /deep/ [main] {
+	background-color: white;
+}
+
+:host /deep/ #search {
+	width: 100%;
+}
+
+uvalib-logo {
+	padding-right: 15px;
+}

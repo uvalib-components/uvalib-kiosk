@@ -1,0 +1,26 @@
+{
+  "name": "uvalib-kiosk",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "uvalib-kiosk.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester"
+  },
+  "homepage": "https://github.com/uvalib-components/uvalib-kiosk",
+  "_release": "c62243c50e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "c62243c50e041646ad377dffd98d7bee139651db"
+  },
+  "_source": "git://github.com/uvalib-components/uvalib-kiosk.git",
+  "_target": "master",
+  "_originalSource": "uvalib-components/uvalib-kiosk",
+  "_direct": true
+}
