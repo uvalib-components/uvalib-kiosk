@@ -15,11 +15,9 @@
     "core-selector": "Polymer/core-selector",
     "core-header-panel": "Polymer/core-header-panel",
     "core-animated-pages": "Polymer/core-animated-pages",
-    "uvalib-directions": "uvalib-components/uvalib-stacks-direct",
     "uvalib-images": "uvalib-components/uvalib-images",
     "uvalib-results-list": "uvalib-components/uvalib-results-list",
     "uvalib-directions-list": "uvalib-components/uvalib-directions-list",
-    "uvalib-directions": "uvalib-components/uvalib-directions",
     "uvalib-floorplan": "uvalib-components/uvalib-floorplan"
   },
   "devDependencies": {
