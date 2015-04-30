@@ -87,7 +87,7 @@ Element providing solution to no problem in particular.
       selectedItem: null,
       toggle: 0,
       selectedItemChanged: function(){
-        if (this.selectedItem) { 
+        if (this.selectedItem && this.selectedItem.available) { 
           this.toggle = 1;
           this.floors = (this.selectedItem.copy.direction.floor=='4')?['4']:['4',this.selectedItem.copy.direction.floor];
         } else {
