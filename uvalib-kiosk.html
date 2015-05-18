@@ -2,6 +2,7 @@
 <link rel="import" href="../core-scaffold/core-scaffold.html">
 <link rel="import" href="../core-header-panel/core-header-panel.html">
 <link rel="import" href="../core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../uvalib-directions/uvalib-directions.html">
 <link rel="import" href="../uvalib-images/uvalib-images.html">
@@ -31,18 +32,23 @@ Element providing solution to no problem in particular.
         <core-toolbar style="background-color: #526E9C; color: #fff;">
           <div id="search" layout horizontal>
             <core-icon icon="search"></core-icon>
-            <input type="search" id="input" value="{{query}}" autocomplete="off" flex placeholder="Find a book in {{library}}"/>
+            <input type="search" id="searchinput" value="{{query}}" autocomplete="off" flex placeholder="Find a book in {{library}}" on-focus="{{focusSearch}}"/>
           </div>
         </core-toolbar>
 
-        <core-animated-pages id="searchDirectBox" selected="{{toggle}}" transitions="cross-fade" fit>
-          <section id="searchpage" vertical layout>
-            <uvalib-results-list query="{{query}}" items="{{items}}" selectedItem="{{selectedItem}}" library="{{library}}" cross-fade flex></uvalib-results-list>
-          </section>
-          <section id="directionspage">
-            <uvalib-directions-list steps="{{steps}}" selectedStep="{{selectedStep}}" item="{{selectedItem}}" library="{{library}}" cross-fade flex></uvalib-directions-list>
-          </section>
-        </core-animated-pages>
+        <div fit layout vertical>
+          <core-animated-pages id="searchDirectBox" selected="{{toggle}}" transitions="cross-fade" flex>
+            <section id="intropage" vertical layout>
+              <paper-button raised on-tap="{{focusSearch}}">Find in Alderman</paper-button>
+            </section>
+            <section id="searchpage" vertical layout>
+              <uvalib-results-list query="{{query}}" items="{{items}}" selectedItem="{{selectedItem}}" library="{{library}}" cross-fade flex></uvalib-results-list>
+            </section>
+            <section id="directionspage">
+              <uvalib-directions-list steps="{{steps}}" selectedStep="{{selectedStep}}" item="{{selectedItem}}" library="{{library}}" cross-fade flex></uvalib-directions-list>
+            </section>
+          </core-animated-pages>
+        </div>
 
       </core-header-panel>
       <div tool>
@@ -88,13 +94,19 @@ Element providing solution to no problem in particular.
       toggle: 0,
       selectedItemChanged: function(){
         if (this.selectedItem && this.selectedItem.available) { 
-          this.toggle = 1;
+          this.toggle = 2;
           this.floors = (this.selectedItem.copy.direction.floor=='4')?['4']:['4',this.selectedItem.copy.direction.floor];
         } else {
           this.selectedFloor = '4';
           this.floors = ['4'];
-          this.toggle = 0;
+          this.toggle = 1;
         }
+      },
+      focusSearch: function(){
+        console.log('searchbox focused');
+        if (this.shadowRoot.activeElement != this.$.searchinput)
+          this.$.searchinput.focus();
+        this.toggle = 1;
       },
 
       floors: ['4']
